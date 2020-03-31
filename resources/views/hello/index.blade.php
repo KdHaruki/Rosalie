@@ -28,7 +28,6 @@
     </ul>
   </div>
 </nav>
- 
 <div class="container">
     <div class="row" id="content" style="padding:80px 0 0 0">
         <div class="col-md-3">
@@ -59,26 +58,32 @@
         <!-- main -->
         <div class="col-md-9">
             <div class="page-header" style="margin-top:-30px;padding-bottom:0px;">
-            <h1><small>タイトル</small></h1>
+            <h1><small>記事一覧</small></h1>
             </div>
             <table class="table table-striped table-hover">
             <thead>
                 <tr>
-                <th>No</th>
-                <th>name</th>
-                <th>email</th>
-                <th>tel</th>
-                <th>opration</th>
+                  <th>Type</th>
+                  <th>Title</th>
+                  <th>投稿日</th>
+                  <th></th>
+                  <th></th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                <td>01</td><td>hoge foo</td><td>hoge@foo.com</td><td>06-1234-5678</td>
-                <td>
-                    <a href="" class="btn btn-primary btn-sm">詳細</a>
+                  @foreach($users as $item)
+                  <td>{{$item->article_detail_type_name}}</td>
+                  <td>{{$item->article_title}}</td>
+                  <td>{{$item->registration_date_time}}</td>
+                  @endforeach
+                  <td>
+                  <!--
+                    <a href="" class="btn btn-primary btn-sm">閲覧</a>
                     <a href="" class="btn btn-primary btn-sm">編集</a>
                     <a href="" class="btn btn-danger btn-sm">削除</a>
-                </td>
+                  -->
+                  </td>
                 </tr>
             </tbody>
             </table>
