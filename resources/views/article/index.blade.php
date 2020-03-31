@@ -24,7 +24,7 @@
     </div>
     <ul class="nav navbar-nav">
       <li class="active"><a href="#">IT</a></li>
-      <li><a href="#">ゲーム</a></li>
+      <li><a href="#">Game</a></li>
     </ul>
   </div>
 </nav>
@@ -35,21 +35,13 @@
                 <div class="panel-heading">
                 Menu
                 </div>
-            <ul class="nav nav-pills nav-stacked">
-                <li><a href=""><i class="glyphicon glyphicon-menu-right"></i> PHP</a></li>
-                <li><a href=""><i class="glyphicon glyphicon-menu-right"></i> HTML</a></li>
-                <li><a href=""><i class="glyphicon glyphicon-menu-right"></i> CSS</a></li>
-                <li><a href=""><i class="glyphicon glyphicon-menu-right"></i> CakePHP</a></li>
-                <li><a href=""><i class="glyphicon glyphicon-menu-right"></i> Laravel</a></li>
-                <li><a href=""><i class="glyphicon glyphicon-menu-right"></i> SQL</a></li>
-                <li><a href=""><i class="glyphicon glyphicon-menu-right"></i> JavaScript</a></li>
-                <li><a href=""><i class="glyphicon glyphicon-menu-right"></i> Java</a></li>
-                <li><a href=""><i class="glyphicon glyphicon-menu-right"></i> Flutter</a></li>
-                <li><a href=""><i class="glyphicon glyphicon-menu-right"></i> Linux</a></li>
-                <li><a href=""><i class="glyphicon glyphicon-menu-right"></i> Docker</a></li>
-                <li><a href=""><i class="glyphicon glyphicon-menu-right"></i> AdobeXD</a></li>
-                <li><a href=""><i class="glyphicon glyphicon-menu-right"></i> その他</a></li>
-            </ul>
+              <ul class="nav nav-pills nav-stacked">
+                @foreach($article_detail_type as $item)
+                <li>
+                  <a href=""><i class="glyphicon glyphicon-menu-right"></i>{{$item->article_detail_type_name}}</a>
+                </li>
+                @endforeach
+              </ul>
             </div>
             <div class="panel panel-default" id="twitter-view-limited">
                 <a class="twitter-timeline" href="https://twitter.com/rosalie_as_r?ref_src=twsrc%5Etfw">Tweets by rosalie_as_r</a>
@@ -71,20 +63,20 @@
                 </tr>
             </thead>
             <tbody>
+              @foreach($article as $item)
                 <tr>
-                  @foreach($users as $item)
                   <td>{{$item->article_detail_type_name}}</td>
                   <td>{{$item->article_title}}</td>
                   <td>{{$item->registration_date_time}}</td>
-                  @endforeach
-                  <td>
                   <!--
+                  <td>
                     <a href="" class="btn btn-primary btn-sm">閲覧</a>
                     <a href="" class="btn btn-primary btn-sm">編集</a>
                     <a href="" class="btn btn-danger btn-sm">削除</a>
-                  -->
                   </td>
+                  -->
                 </tr>
+              @endforeach
             </tbody>
             </table>
         </div>
