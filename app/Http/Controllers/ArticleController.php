@@ -13,7 +13,7 @@ class ArticleController extends Controller
     $articleIt = DB::table('article')
     ->leftJoin('article_type', 'article.article_type', '=', 'article_type.article_type_id')
     ->leftJoin('article_detail_type', 'article.article_detail_type', '=', 'article_detail_type.article_detail_type_id')
-    ->where('article_type_set_id', '=', 1)
+    // ->where('article_type_set_id', '=', 1)
     ->get();
 
     // MenuSQL　ITに関する情報のみ

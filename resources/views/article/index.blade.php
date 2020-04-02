@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
   <meta charset="utf-8">
-  <title>test</title>
+  <title>ロザリーと往く</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" media="screen">
 </head>
@@ -18,7 +18,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-     <a class="navbar-brand" href="#">
+     <a class="navbar-brand" href="/article">
       <img alt="Brand" src="/img/logo.png" style="height: 20px;">
      </a>
     </div>
@@ -33,7 +33,7 @@
         <div class="col-md-3">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                Menu
+                  <a href="/article">Menu</a>
                 </div>
               <ul class="nav nav-pills nav-stacked">
                 @foreach($article_detail_type as $item)
@@ -64,7 +64,8 @@
             </thead>
             <tbody>
               @foreach($article as $item)
-                <tr>
+                <tr onclick="articleClick(this)">
+                  <td hidden>{{$item->id}}</td>
                   <td>{{$item->article_detail_type_name}}</td>
                   <td>{{$item->article_title}}</td>
                   <td>{{$item->registration_date_time}}</td>
@@ -83,6 +84,14 @@
     </div>
 </div>
 
+<script>
+// 記事をクリックした時に記事IDを取得して、そのIDのページを開く
+function articleClick(getArticleClickParamTd){
+  var articleParamTd = getArticleClickParamTd.cells;
+  var articleId = articleParamTd[0].innerText;
+  location.href = "/article" + "?article=" + articleId;
+}
+</script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
