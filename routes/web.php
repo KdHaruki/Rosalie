@@ -17,3 +17,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/article','ArticleController@index');
+Route::get('/article/{articleId}', 'ArticleDetailController@index');
