@@ -3,3 +3,15 @@
 #twitter-view-limited {
     padding-right: 1%;
 }
+
+#main {
+    background-color: #fffaf0;
+    padding-top: 10px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+}
+
+#mainInput {
+    width: 100px;
+}

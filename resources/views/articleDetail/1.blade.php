@@ -38,14 +38,49 @@
               </small></h1>
             </div>
         <!-- ここから本編 -->
-
-
+          <div id="main" onchange="DifferencePoint()">
+            <p>Enemy（相手）とMyself（自分）のポイントを入力することで差分が計算されます。</p>
+            <p>Sランクサークル 降格31位</p>
+            <p>Aランクサークル 降格71位 昇格20位</p>
+            <p>Bランクサークル 昇格30位</p>
+            <p>例：Aランクで維持をしたい場合、Enemyに20位のサークルのポイント、Myselfに自分サークルのポイント</p>
+            <p>それぞれ入力することで、エクシーズで獲得していいポイントが表示されます。</p>
+            </p>
+            <table>
+            <tr>
+              <td><input id="mainInput" class="enemyCirclePoint" type="text" size="10" placeholder="Enemy" value=""></td>
+            </tr>
+            <tr>
+              <td><input id="mainInput" class="allyCirclePoint" type="text" size="10" placeholder="Myself" value=""></td>
+            </tr>
+            <tr>
+              <td>勝利時獲得可能ポイント：<input id="mainInput"class="differenceWinPoint" type="text" name="name" size="10" maxlength="20"></td>
+            </tr>
+            <tr>
+              <td>敗北時獲得可能ポイント：<input id="mainInput" class="differenceLosePoint" type="text" name="name" size="10" maxlength="20"></td>
+            </tr>
+            </table>
+          </div>
         </div>
     </div>
 </div>
 
 <script>
-
+/*****************************************************************
+サークルポイント差分の計算ボタンが押されたら、その結果を表示
+*****************************************************************/
+function DifferencePoint(){
+  var enemyCirclePoint = $(".enemyCirclePoint").val();
+  var allyCirclePoint = $(".allyCirclePoint").val();
+  var differencePoint = enemyCirclePoint - allyCirclePoint;
+  if(differencePoint < 0){
+    alert('入力値が正しくありません：' + differencePoint);
+  }else{
+    var differenceWinPoint = Math.floor(differencePoint / 1.5);
+    $('.differenceWinPoint').val(differenceWinPoint);
+    $('.differenceLosePoint').val(differencePoint);
+  }
+}
 </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
