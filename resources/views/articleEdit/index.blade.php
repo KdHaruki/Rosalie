@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="ja">
 <head>
@@ -8,6 +7,7 @@
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" media="screen">
 </head>
 <body>
+
 <?php require('../packages/header.php'); ?>
 <div class="container">
     <div class="row" id="content" style="padding:80px 0 0 0">
@@ -16,10 +16,12 @@
                 <div class="panel-heading">
                   <a href="/article">Menu</a>
                 </div>
-                <ul class="nav nav-pills nav-stacked">
+              <ul class="nav nav-pills nav-stacked">
+                @foreach($article_detail_type as $item)
                 <li>
-                  <a></i>記事</a>
+                  <a href="/article?type={{$item->article_detail_type_name}}"><i class="glyphicon glyphicon-menu-right"></i>{{$item->article_detail_type_name}}</a>
                 </li>
+                @endforeach
               </ul>
             </div>
             <div class="panel panel-default" id="twitter-view-limited">
@@ -29,31 +31,33 @@
         <!-- main -->
         <div class="col-md-9">
             <div class="page-header" style="margin-top:-30px;padding-bottom:0px;">
-            <h1><small>ログイン</small></h1>
+              <h1><small>
+                編集
+              </small></h1>
             </div>
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-md-8" id="main">
-                        <div class="card">
-                            <div class="card-header">Dashboard</div>
-                            <div class="card-body">
-                                @if (session('status'))
-                                    <div class="alert alert-success" role="alert">
-                                        {{ session('status') }}
-                                    </div>
-                                @endif
-                                You are logged in!
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <!-- ここから本編 -->
+          <div id="main">
+            <table>
+            @foreach($articleEdit as $item)
+              <tr><td><input value="{{$item->article_type_name}}"></input></td></tr>
+              <tr><td><input value="{{$item->article_detail_type_name}}"></input></td></tr>
+              <tr><td><input value="{{$item->article_title}}"></input></td></tr>
+              <tr><td><input value="{{$item->update_date_time}}"></input></td></tr>
+              <tr><td><input value="{{$item->delete_flg}}"></input></td></tr>
+            @endforeach
+            </table>
+          </div>
         </div>
     </div>
 </div>
 
 <script>
-
+// 記事をクリックした時に記事IDを取得して、そのIDのページを開く
+function articleClick(getArticleClickParamTd){
+  var articleParamTd = getArticleClickParamTd.cells;
+  var articleId = articleParamTd[0].innerText;
+  location.href = "/article" + "/" + articleId;
+}
 </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
@@ -61,7 +65,3 @@
 <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </body>
 </html>
-
-
-
-

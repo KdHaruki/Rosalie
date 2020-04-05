@@ -12,8 +12,9 @@
      </a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="#">IT</a></li>
-      <li><a href="#">Game</a></li>
+      <li class="active"><a href="/article">IT</a></li>
+      <li><a href="#">Games</a></li>
+      <li><a href="/login">Login</a></li>
     </ul>
   </div>
 </nav>

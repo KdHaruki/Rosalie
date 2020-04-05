@@ -50,13 +50,12 @@
                   <td>{{$item->article_detail_type_name}}</td>
                   <td>{{$item->article_title}}</td>
                   <td>{{$item->registration_date_time}}</td>
-                  <!--
+                  @if (!session('status'))
                   <td>
-                    <a href="" class="btn btn-primary btn-sm">閲覧</a>
-                    <a href="" class="btn btn-primary btn-sm">編集</a>
-                    <a href="" class="btn btn-danger btn-sm">削除</a>
+                    <a href="/articleEdit?id={{$item->id}}" class="btn btn-primary btn-sm">編集</a>
+                    <a href="/articleEdit?id={{$item->id}}" class="btn btn-danger btn-sm">削除</a>
                   </td>
-                  -->
+                  @endif
                 </tr>
               @endforeach
             </tbody>
