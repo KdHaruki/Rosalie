@@ -44,23 +44,23 @@
             <p>Aランクサークル 降格71位 昇格20位</p>
             <p>Bランクサークル 昇格30位</p>
             <p>例：Aランクで維持をしたい場合、Enemyに20位のサークルのポイント、Myselfに自分サークルのポイント</p>
-            <p>それぞれ入力することで、エクシーズで獲得していいポイントが表示されます。</p>
-            </p>
+            <p>それぞれ入力することで、エクシーズで獲得して問題ないポイントが表示されます。</p>
             <table>
-            <tr>
-              <td><input id="mainInput" class="enemyCirclePoint" type="text" size="10" placeholder="Enemy" value=""></td>
-            </tr>
-            <tr>
-              <td><input id="mainInput" class="allyCirclePoint" type="text" size="10" placeholder="Myself" value=""></td>
-            </tr>
-            <tr>
-              <td>勝利時獲得可能ポイント：<input id="mainInput"class="differenceWinPoint" type="text" name="name" size="10" maxlength="20"></td>
-            </tr>
-            <tr>
-              <td>敗北時獲得可能ポイント：<input id="mainInput" class="differenceLosePoint" type="text" name="name" size="10" maxlength="20"></td>
-            </tr>
+              <tr>
+                <td><input id="mainInput" class="enemyCirclePoint" type="text" size="10" placeholder="Enemy" value=""></td>
+              </tr>
+              <tr>
+                <td><input id="mainInput" class="allyCirclePoint" type="text" size="10" placeholder="Myself" value=""></td>
+              </tr>
+              <tr>
+                <td>勝利時獲得可能ポイント：<input id="mainInput"class="differenceWinPoint" type="text" name="name" size="10" maxlength="20"></td>
+              </tr>
+              <tr>
+                <td>敗北時獲得可能ポイント：<input id="mainInput" class="differenceLosePoint" type="text" name="name" size="10" maxlength="20"></td>
+              </tr>
             </table>
           </div>
+          <!-- 本編終了 -->
         </div>
     </div>
 </div>

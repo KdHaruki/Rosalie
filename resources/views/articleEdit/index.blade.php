@@ -39,25 +39,50 @@
           <div id="main">
             <table>
             @foreach($articleEdit as $item)
-              <tr><td><input value="{{$item->article_type_name}}"></input></td></tr>
-              <tr><td><input value="{{$item->article_detail_type_name}}"></input></td></tr>
-              <tr><td><input value="{{$item->article_title}}"></input></td></tr>
-              <tr><td><input value="{{$item->update_date_time}}"></input></td></tr>
-              <tr><td><input value="{{$item->delete_flg}}"></input></td></tr>
+              <tr>
+                <td>タイトル</td>
+                <td><input id="mainInput" value="{{$item->article_title}}"></input></td>
+              </tr>
+              <tr>
+                <td>記事のType</td>
+                <td><input id="mainInput" value="{{$item->article_detail_type_name}}"></input></td>
+              </tr>
+              <tr>
+                <td>更新日</td>
+                <td><input id="mainInput" value="{{$item->update_date_time}}"></input></td>
+              </tr>
+              <tr>
+                <td>表示フラグ</td>
+                <td>
+                  <select name='delete_flg'>
+                  <option value='0'>表示</option>
+                  <option value='1'>非表示</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>　</td>
+                <td>　</td>
+              </tr>
+              <tr>
+                <td>　</td>
+                <td>　</td>
+                <td><a href="" class="btn btn-primary btn-sm">編集を完了する</a></td>
+                <td>　</td>
+                <td><a href="/article" class="btn btn-primary btn-sm">戻る</a></td>
+              </tr>
+              </table>
+              <br>
+            <textarea id="getHtmlSauce">{{file_get_contents('../resources/views/articleDetail/' .$item->id. '.blade.php')}}</textarea>
             @endforeach
-            </table>
           </div>
+        <!-- 本編終了 -->
         </div>
     </div>
 </div>
 
 <script>
-// 記事をクリックした時に記事IDを取得して、そのIDのページを開く
-function articleClick(getArticleClickParamTd){
-  var articleParamTd = getArticleClickParamTd.cells;
-  var articleId = articleParamTd[0].innerText;
-  location.href = "/article" + "/" + articleId;
-}
+  
 </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>

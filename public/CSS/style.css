@@ -13,5 +13,10 @@
 }
 
 #mainInput {
-    width: 100px;
+    width: 500px;
+}
+
+#getHtmlSauce {
+    width: 800px;
+    height: 5000px;
 }
