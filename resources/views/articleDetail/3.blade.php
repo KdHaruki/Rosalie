@@ -32,61 +32,55 @@
         <div class="col-md-9">
             <div class="page-header" style="margin-top:-30px;padding-bottom:0px;">
               <h1><small>
-                編集
+                @foreach($article as $item)
+                  {{$item->article_title}}
+                @endforeach
               </small></h1>
             </div>
         <!-- ここから本編 -->
-        <form method="POST" action="articleEdit" accept-charset="UTF-8">
-          @csrf
-          <div id="main">
+          <div id="main" onchange="DifferencePoint()">
+            <p>Enemy（相手）とMyself（自分）のポイントを入力することで差分が計算されます。</p>
+            <p>Sランクサークル 降格31位</p>
+            <p>Aランクサークル 降格71位 昇格20位</p>
+            <p>Bランクサークル 昇格30位</p>
+            <p>例：Aランクで維持をしたい場合、Enemyに20位のサークルのポイント、Myselfに自分サークルのポイント</p>
+            <p>それぞれ入力することで、エクシーズで獲得して問題ないポイントが表示されます。</p>
             <table>
-            @foreach($articleEdit as $item)
               <tr>
-                <td>タイトル</td>
-                <td><input id="mainInput" name="title" value="{{$item->article_title}}"></input></td>
+                <td><input id="mainInput" class="enemyCirclePoint" type="text" size="10" placeholder="Enemy" value=""></td>
               </tr>
               <tr>
-                <td>記事のType</td>
-                <td><input id="mainInput" name="articleType" value="{{$item->article_detail_type_name}}"></input></td>
+                <td><input id="mainInput" class="allyCirclePoint" type="text" size="10" placeholder="Myself" value=""></td>
               </tr>
               <tr>
-                <td>更新日</td>
-                <td><input id="mainInput" name="updateTime" value="{{$item->update_date_time}}"></input></td>
+                <td>勝利時獲得可能ポイント：<input id="mainInput"class="differenceWinPoint" type="text" name="name" size="10" maxlength="20"></td>
               </tr>
               <tr>
-                <td>表示フラグ</td>
-                <td>
-                  <select name='delete_flg'>
-                  <option value='0'>表示</option>
-                  <option value='1'>非表示</option>
-                  </select>
-                </td>
+                <td>敗北時獲得可能ポイント：<input id="mainInput" class="differenceLosePoint" type="text" name="name" size="10" maxlength="20"></td>
               </tr>
-              <tr>
-                <td>　</td>
-                <td>　</td>
-              </tr>
-              <tr>
-                <td>　</td>
-                <td>　</td>
-                <td><button type="submit" name="editComplete" class="btn btn-primary btn-sm">編集を完了する</button></td>
-                <td>　</td>
-                <td><a href="/article" class="btn btn-primary btn-sm">戻る</a></td>
-              </tr>
-              <input type="hidden" name="id" value="{{$item->id}}"></input>
-              </table>
-              <br>
-            <textarea name="text" id="getHtmlSauce">{{$insertBlade = file_get_contents('../resources/views/articleDetail/' .$item->id. '.blade.php')}}</textarea>
-            @endforeach
+            </table>
           </div>
-        </form>
-        <!-- 本編終了 -->
+          <!-- 本編終了 -->
         </div>
     </div>
 </div>
 
 <script>
-  
+/*****************************************************************
+サークルポイント差分の計算ボタンが押されたら、その結果を表示
+*****************************************************************/
+function DifferencePoint(){
+  var enemyCirclePoint = $(".enemyCirclePoint").val();
+  var allyCirclePoint = $(".allyCirclePoint").val();
+  var differencePoint = enemyCirclePoint - allyCirclePoint;
+  if(differencePoint < 0){
+    alert('入力値が正しくありません：' + differencePoint);
+  }else{
+    var differenceWinPoint = Math.floor(differencePoint / 1.5);
+    $('.differenceWinPoint').val(differenceWinPoint);
+    $('.differenceLosePoint').val(differencePoint);
+  }
+}
 </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>

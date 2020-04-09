@@ -19,6 +19,7 @@ Route::get('/', function () {
 Route::get('/article','ArticleController@index');
 Route::get('/article/{articleId}', 'ArticleDetailController@index');
 Route::get('/articleEdit', 'ArticleEditController@index');
+Route::post('/articleEdit', 'ArticleEditController@index');
 
 Auth::routes();
 

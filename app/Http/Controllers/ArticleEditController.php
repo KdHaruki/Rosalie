@@ -13,6 +13,14 @@ class ArticleEditController extends Controller
     }
 
     public function index(Request $request){
+
+        // 詳細画面の編集完了を押下した時、DBにある記事情報をUpdateして関連する「X.balde.php」の中身を上書きする。
+        if($request->isMethod('post')){
+            file_put_contents("../resources/views/articleDetail/$request->id.blade.php", $request->text);
+            return view('articleEdit.complete');
+        }
+
+        // 一覧から記事を押下した遷移先の情報を取得
         $getSelectArticleId = $request->input('id');
         if(!empty($getSelectArticleId)){
             $articleEdit = DB::table('article')
@@ -31,6 +39,7 @@ class ArticleEditController extends Controller
         ->leftJoin('article', 'article.article_detail_type', '=', 'article_detail_type.article_detail_type_id')
         ->where('article_type_set_id', '=', 1)
         ->get();
+
         return view('articleEdit.index',['articleEdit' => $articleEdit],['article_detail_type' => $articleItDetailType]);
     }
 }
