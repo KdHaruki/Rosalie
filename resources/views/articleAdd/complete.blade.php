@@ -16,13 +16,7 @@
                 <div class="panel-heading">
                   <a href="/article">Menu</a>
                 </div>
-              <ul class="nav nav-pills nav-stacked">
-                @foreach($article_detail_type as $item)
-                <li>
-                  <a href=""><i class="glyphicon glyphicon-menu-right"></i>{{$item->article_detail_type_name}}</a>
-                </li>
-                @endforeach
-              </ul>
+                
             </div>
             <div class="panel panel-default" id="twitter-view-limited">
                 <a class="twitter-timeline" href="https://twitter.com/rosalie_as_r?ref_src=twsrc%5Etfw">Tweets by rosalie_as_r</a>
@@ -32,20 +26,21 @@
         <div class="col-md-9">
             <div class="page-header" style="margin-top:-30px;padding-bottom:0px;">
               <h1><small>
-                @foreach($article as $item)
-                  {{$item->article_title}}
-                @endforeach
+                完了
               </small></h1>
             </div>
         <!-- ここから本編 -->
-
+        <meta http-equiv="refresh" content=" 2; url=/article">
+        <div id="main">
+          <p>２秒後にリダイレクトします。</p>
+        </div>
         <!-- 本編終了 -->
         </div>
     </div>
 </div>
 
 <script>
-
+  
 </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>

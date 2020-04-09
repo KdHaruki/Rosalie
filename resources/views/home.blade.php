@@ -18,7 +18,7 @@
                 </div>
                 <ul class="nav nav-pills nav-stacked">
                 <li>
-                  <a></i>記事</a>
+                  <a href="/articleAdd"><i class="glyphicon glyphicon-menu-right"></i>新規作成</a>
                 </li>
               </ul>
             </div>
