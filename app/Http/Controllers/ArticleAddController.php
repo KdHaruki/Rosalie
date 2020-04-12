@@ -21,6 +21,55 @@ class ArticleAddController extends Controller
             ->first();
             $articleLustId = (int)$articleLustId->id + 1;
             file_put_contents("../resources/views/articleDetail/$articleLustId.blade.php", $request->text);
+
+            // 記事タイプの取得
+            $getArticleTitle = $request->input('articleType');
+            $selectArticleTitle = DB::table('article_detail_type')
+            ->where('article_detail_type_name', 'LIKE', $getArticleTitle)
+            ->get();
+            $selectArticleTitle = json_decode(json_encode($selectArticleTitle), true);
+
+            if($selectArticleTitle == NULL){
+                $errorMessage = "存在しない記事タイプです";
+            }else{
+                DB::table('article')->insert(
+                ['id' => $articleLustId,
+                'article_type' => $request->input('article_type'),
+                'article_detail_type' => $selectArticleTitle,
+                'article_title' => $request->input('title'),
+                'registration_data_time' => date("Y/m/d"),
+                'update_data_time' => date("Y/m/d"),
+                'delete_flg' => $request->input('delete_flg')]
+                );
+
+
+
+
+                DB::table('article')
+                ->where('id', $request->id)
+                ->update(
+                    ['article_detail_type' => (int)$selectArticleTitle[0]["article_detail_type_id"]]
+                );
+            }
+
+            // 記事のアップデート
+            DB::table('article')
+            ->where('id', $request->id)
+            ->update(
+                ['update_date_time' => date("Y/m/d")]
+            );
+
+            $deleteFlg = $request->input('delete_flg');
+            // 記事のアップデート
+            DB::table('article')
+            ->where('id', $request->id)
+            ->update(
+                ['delete_flg' => $deleteFlg]
+            );
+
+
+
+
             return view('articleEdit.complete');
         }
 

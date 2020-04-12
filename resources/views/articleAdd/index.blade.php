@@ -53,6 +53,15 @@
                 <td><input id="mainInput" name="updateTime" value=""></input></td>
               </tr>
               <tr>
+                <td>記事の種類</td>
+                <td>
+                  <select name='article_type'>
+                  <option value='1'>IT</option>
+                  <option value='2'>GAME</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
                 <td>表示フラグ</td>
                 <td>
                   <select name='delete_flg'>

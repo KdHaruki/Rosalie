@@ -41,6 +41,13 @@ class ArticleEditController extends Controller
                     ['article_detail_type' => (int)$selectArticleTitle[0]["article_detail_type_id"]]
                 );
             }
+            
+            // 記事のアップデート
+            DB::table('article')
+            ->where('id', $request->id)
+            ->update(
+                ['article_type' => $request->input('article_type')]
+            );
 
             // 記事のアップデート
             DB::table('article')
