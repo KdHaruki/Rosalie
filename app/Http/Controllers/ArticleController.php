@@ -36,6 +36,11 @@ class ArticleController extends Controller
         ->leftJoin('article', 'article.article_detail_type', '=', 'article_detail_type.article_detail_type_id')
         ->where('article_type_set_id', '=', 1)
         ->get();
-            return view('article.index',['article' => $articleIt],['article_detail_type' => $articleItDetailType]);
+
+        $date = [
+            'article' => $articleIt,
+            'article_detail_type' => $articleItDetailType
+        ];
+        return view('article.index',$date);
     }
 }

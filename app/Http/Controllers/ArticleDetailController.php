@@ -28,6 +28,12 @@ class ArticleDetailController extends Controller
         ->get();
         // 記事をクリックした時のIDを取得してそのページへ遷移
         $articleDetail = "articledetail.".$getArticleId;
-        return view($articleDetail,['article' => $articleIt],['article_detail_type' => $articleItDetailType]);
+
+        $date = [
+            'article' => $articleIt,
+            'article_detail_type' => $articleItDetailType
+        ];
+
+        return view($articleDetail,$date);
     }
 }

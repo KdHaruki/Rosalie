@@ -42,9 +42,6 @@ class ArticleAddController extends Controller
                 'delete_flg' => $request->input('delete_flg')]
                 );
 
-
-
-
                 DB::table('article')
                 ->where('id', $request->id)
                 ->update(
@@ -66,10 +63,6 @@ class ArticleAddController extends Controller
             ->update(
                 ['delete_flg' => $deleteFlg]
             );
-
-
-
-
             return view('articleEdit.complete');
         }
 
@@ -92,6 +85,11 @@ class ArticleAddController extends Controller
         ->leftJoin('article', 'article.article_detail_type', '=', 'article_detail_type.article_detail_type_id')
         ->where('article_type_set_id', '=', 1)
         ->get();
+
+        $date = [
+            'articleEdit' => $articleEdit,
+            'article_detail_type' => $articleItDetailType
+        ];
 
         return view('articleAdd.index',['articleEdit' => $articleEdit],['article_detail_type' => $articleItDetailType]);
     }

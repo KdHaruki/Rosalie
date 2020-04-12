@@ -86,6 +86,11 @@ class ArticleEditController extends Controller
         ->where('article_type_set_id', '=', 1)
         ->get();
 
-        return view('articleEdit.index',['articleEdit' => $articleEdit],['article_detail_type' => $articleItDetailType]);
+        $date = [
+            'articleEdit' => $articleEdit,
+            'article_detail_type' => $articleItDetailType
+        ];
+
+        return view('articleEdit.index',$date);
     }
 }
