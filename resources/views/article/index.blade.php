@@ -49,7 +49,7 @@
                   <td hidden>{{$item->id}}</td>
                   <td>{{$item->article_detail_type_name}}</td>
                   <td>{{$item->article_title}}</td>
-                  <td>{{$item->registration_date_time}}</td>
+                  <td>{{$item->update_date_time}}</td>
                   @if (!session('status'))
                   <td>
                     <a href="/articleEdit?id={{$item->id}}" class="btn btn-primary btn-sm">編集</a>
