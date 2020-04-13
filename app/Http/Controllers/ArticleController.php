@@ -20,9 +20,9 @@ class ArticleController extends Controller
             $articleIt = DB::table('article')
             ->leftJoin('article_type', 'article.article_type', '=', 'article_type.article_type_id')
             ->leftJoin('article_detail_type', 'article.article_detail_type', '=', 'article_detail_type.article_detail_type_id')
-            ->where('article_type_set_id', '=', $articleDetailTypeId)
+            ->where('article_detail_type_id', '=', $articleDetailTypeId)
             ->where('delete_flg', '=', 0)
-            ->get(); 
+            ->get();
         }else{
             $articleIt = DB::table('article')
             ->leftJoin('article_type', 'article.article_type', '=', 'article_type.article_type_id')

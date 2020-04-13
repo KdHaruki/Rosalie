@@ -14,7 +14,7 @@
         <div class="col-md-3">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                  <a href="/article">Menu</a>
+                  <a href="/article">記事一覧</a>
                 </div>
                 
             </div>

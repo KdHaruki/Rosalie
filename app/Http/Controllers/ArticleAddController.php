@@ -35,13 +35,13 @@ class ArticleAddController extends Controller
                 DB::table('article')->insert(
                 ['id' => $articleLustId,
                 'article_type' => $request->input('article_type'),
-                'article_detail_type' => $selectArticleTitle,
+                'article_detail_type' => (int)$selectArticleTitle[0]["article_detail_type_id"],
                 'article_title' => $request->input('title'),
-                'registration_data_time' => date("Y/m/d"),
-                'update_data_time' => date("Y/m/d"),
+                'registration_date_time' => date("Y/m/d"),
+                'update_date_time' => date("Y/m/d"),
                 'delete_flg' => $request->input('delete_flg')]
                 );
-
+  
                 DB::table('article')
                 ->where('id', $request->id)
                 ->update(
